@@ -10,10 +10,13 @@ const app = express();
 
 dotenv.config();
 
+let ALLOWED_ORIGINS = [process.env.URL_1, process.env.URL_2];
+
 app.use(cors({
-        origin: process.env.URL_2,
-        credentials: true
-    }));
+    origin: ALLOWED_ORIGINS,
+    credentials: true
+}));
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
